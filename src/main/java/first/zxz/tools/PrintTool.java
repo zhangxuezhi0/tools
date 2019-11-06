@@ -23,4 +23,10 @@ public class PrintTool {
         }
     }
 
+    public static void printStringArr(String[] strings) {
+        for (String string : strings) {
+            System.out.println(string);
+        }
+    }
+
 }
