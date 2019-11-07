@@ -75,6 +75,31 @@ public class DateUtil {
         throw new DateFormatException();
     }
 
+    /**
+     * 获取当前时间的字符串格式
+     *
+     * @return java.lang.String
+     * @author Zxz
+     * @date 2019/11/6 17:46
+     **/
+    public static String getNow() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_TIME_FORMAT_1);
+        return simpleDateFormat.format(new Date());
+    }
+
+    /**
+     * 日期格式化成字符串格式
+     *
+     * @param date 日期数据
+     * @return java.lang.String
+     * @author Zxz
+     * @date 2019/11/6 17:59
+     **/
+    public static String format(Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_TIME_FORMAT_1);
+        return simpleDateFormat.format(date);
+    }
+
     public static void main(String[] args) {
         Date date = newDate("2019-09-09 12:12:12");
         System.out.println(date);
