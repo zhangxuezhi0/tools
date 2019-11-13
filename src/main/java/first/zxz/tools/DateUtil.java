@@ -20,7 +20,7 @@ import java.util.Map;
  * 日期工具类
  *
  * @author zhangxz
- * 2019/11/6
+ *         2019/11/6
  */
 public class DateUtil {
 
@@ -44,26 +44,27 @@ public class DateUtil {
     }
 
     //提示语：所有可用的日期格式
-    public static final String ALL_USABLE_DATE_FORMATS = DATE_REGEX_FORMATTER_MAP.values().toString();
+    public static final String ALL_USABLE_DATE_FORMATS = DATE_REGEX_FORMATTER_MAP.values().toString() + "，以及时间戳；";
 
     /**
      * 根据输入的字符串，进行格式化，并输入日期数据
+     * 注意：格式化之前，会进行null和空字符串过滤；格式化时，会去除字符串两端的空字符串
      *
      * @param formattedDateStr 日期字符串数据
      * @return java.util.Date
      * @author Zxz
      * @date 2019/11/6 15:07
      **/
-    public static Date newDate(String formattedDateStr) {
+    public static Date parse(String formattedDateStr) {
         if (formattedDateStr == null || formattedDateStr.trim().length() <= 0) {
             throw new StringEmptyException();
         }
 
         for (Map.Entry<String, String> entry : DATE_REGEX_FORMATTER_MAP.entrySet()) {
-            if (formattedDateStr.matches(entry.getKey())) {
+            if (formattedDateStr.trim().matches(entry.getKey())) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(entry.getValue());
                 try {
-                    return simpleDateFormat.parse(formattedDateStr);
+                    return simpleDateFormat.parse(formattedDateStr.trim());
                 } catch (ParseException e) {
                     e.printStackTrace();
                     throw new DateFormatException();
@@ -71,8 +72,14 @@ public class DateUtil {
             }
         }
 
-        //格式不匹配
-        throw new DateFormatException();
+        try {
+            Long aLong = Long.valueOf(formattedDateStr);
+            return new Date(aLong);
+        } catch (NumberFormatException e) {
+            //格式不匹配
+            throw new DateFormatException();
+        }
+
     }
 
     /**
@@ -101,8 +108,11 @@ public class DateUtil {
     }
 
     public static void main(String[] args) {
-        Date date = newDate("2019-09-09 12:12:12");
+        Date date = parse("123");
         System.out.println(date);
+
+        String string = "123a";
+        System.out.println(Long.valueOf(string));
     }
 
 }

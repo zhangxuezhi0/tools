@@ -13,7 +13,7 @@ package first.zxz.exception;
  * 2019/11/6
  */
 
-public class StringEmptyException extends BaseRtException {
+public class StringEmptyException extends BaseException {
 
 
     public StringEmptyException() {

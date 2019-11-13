@@ -13,9 +13,11 @@ package first.zxz.exception;
  * 2019/11/6
  */
 
-public class BaseRtException extends RuntimeException {
+public class BaseException extends RuntimeException {
 
-    protected BaseRtException(String message) {
+    private static final long serialVersionUID = 6971034575631650065L;
+
+    protected BaseException(String message) {
         super(message);
     }
 
