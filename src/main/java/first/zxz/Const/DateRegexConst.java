@@ -20,6 +20,9 @@ public class DateRegexConst {
     //日期时间格式1： 2019-01-01 12:12:12
     public static final String DATE_TIME_1 = DATE_1 + " \\d{2}:\\d{2}:\\d{2}";
 
+    //日期时间格式1： 2019-01-01 12:12:12.123
+    public static final String DATE_TIME_MILLI_1 = DATE_TIME_1 + "\\.\\d{3}";
+
     //日期格式2： 2019/01/01
     public static final String DATE_2 = "\\d{4}/\\d{2}/\\d{2}";
 
@@ -52,6 +55,11 @@ public class DateRegexConst {
             System.out.println(str1.matches(DATE_TIME_1));
             System.out.println(str2.matches(DATE_TIME_2));
             System.out.println(str3.matches(DATE_TIME_3));
+        }
+
+        {
+            String str1 = "2019-01-01 12:12:12.123";
+            System.out.println(str1.matches(DATE_TIME_MILLI_1));
         }
 
     }

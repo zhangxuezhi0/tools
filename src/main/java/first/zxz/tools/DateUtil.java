@@ -24,12 +24,14 @@ import java.util.Map;
  */
 public class DateUtil {
 
-    private static final String DATE_FORMAT_1 = "yyyy-MM-dd";
-    private static final String DATE_FORMAT_2 = "yyyy/MM/dd";
-    private static final String DATE_FORMAT_3 = "yyyyMMdd";
-    private static final String DATE_TIME_FORMAT_1 = DATE_FORMAT_1 + " HH:mm:ss";
-    private static final String DATE_TIME_FORMAT_2 = DATE_FORMAT_2 + " HH:mm:ss";
-    private static final String DATE_TIME_FORMAT_3 = DATE_FORMAT_3 + "HHmmss";
+    public static final String DATE_FORMAT_1 = "yyyy-MM-dd";
+    public static final String DATE_FORMAT_2 = "yyyy/MM/dd";
+    public static final String DATE_FORMAT_3 = "yyyyMMdd";
+    public static final String DATE_TIME_FORMAT_1 = DATE_FORMAT_1 + " HH:mm:ss";
+    public static final String DATE_TIME_FORMAT_2 = DATE_FORMAT_2 + " HH:mm:ss";
+    public static final String DATE_TIME_FORMAT_3 = DATE_FORMAT_3 + "HHmmss";
+
+    public static final String DATE_TIME_MILLI_FORMAT_1 = DATE_TIME_FORMAT_1 + ".SSS";
 
     //key为正则表达式，value为对应的日期格式
     private static final HashMap<String, String> DATE_REGEX_FORMATTER_MAP = new HashMap<>();
@@ -41,6 +43,8 @@ public class DateUtil {
         DATE_REGEX_FORMATTER_MAP.put(DateRegexConst.DATE_TIME_1, DATE_TIME_FORMAT_1);
         DATE_REGEX_FORMATTER_MAP.put(DateRegexConst.DATE_TIME_2, DATE_TIME_FORMAT_2);
         DATE_REGEX_FORMATTER_MAP.put(DateRegexConst.DATE_TIME_3, DATE_TIME_FORMAT_3);
+
+        DATE_REGEX_FORMATTER_MAP.put(DateRegexConst.DATE_TIME_MILLI_1, DATE_TIME_MILLI_FORMAT_1);
     }
 
     //提示语：所有可用的日期格式
@@ -94,6 +98,11 @@ public class DateUtil {
         return simpleDateFormat.format(new Date());
     }
 
+    public static String getNow(String dateFormat) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
+        return simpleDateFormat.format(new Date());
+    }
+
     /**
      * 日期格式化成字符串格式
      *
@@ -104,6 +113,20 @@ public class DateUtil {
      **/
     public static String format(Date date) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_TIME_FORMAT_1);
+        return simpleDateFormat.format(date);
+    }
+
+    /**
+     * 根据给定日期数据和日期格式，返回格式化的日期
+     *
+     * @param dateFormat 日期格式
+     * @param date       日期数据
+     * @return java.lang.String 格式化的日期字符串
+     * @author zhangxz
+     * @date 2019/11/20 17:23
+     */
+    public static String format(String dateFormat, Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
         return simpleDateFormat.format(date);
     }
 
