@@ -38,4 +38,8 @@ public class StringUtil {
         return string == null || string.trim().length() <= 0;
     }
 
+    public static boolean isNotBlank(String string) {
+        return string != null && string.trim().length() > 0;
+    }
+
 }
