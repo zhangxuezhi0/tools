@@ -6,6 +6,9 @@
  */
 package first.zxz.tools;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 字符串工具类
  *
@@ -40,6 +43,25 @@ public class StringUtil {
 
     public static boolean isNotBlank(String string) {
         return string != null && string.trim().length() > 0;
+    }
+
+    public static String join(List<String> list, String join) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            builder.append(list.get(i));
+            if (i != list.size() - 1) {
+                builder.append(join);
+            }
+        }
+        return builder.toString();
+    }
+
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("a2");
+        list.add("a3");
+        System.out.println(join(list, ", "));
     }
 
 }
