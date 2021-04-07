@@ -45,6 +45,10 @@ public class StringUtil {
         return string != null && string.trim().length() > 0;
     }
 
+    public static boolean isBlank(String string) {
+        return string == null || string.trim().length() <= 0;
+    }
+
     public static String join(List<String> list, String join) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
