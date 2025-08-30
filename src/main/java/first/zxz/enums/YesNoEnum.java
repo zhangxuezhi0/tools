@@ -16,6 +16,5 @@ public enum YesNoEnum {
     private String description;
 
 
-    private String description_andy_1001;
 
 }
