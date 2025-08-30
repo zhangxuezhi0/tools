@@ -4,7 +4,7 @@
  * Author:   zhangxz
  * Date:     2019/11/6
  */
-package first.zxz.Const;
+package first.zxz.consts;
 
 /**
  * 正则常数定义

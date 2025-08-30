@@ -1,4 +1,4 @@
-package first.zxz.Const;
+package first.zxz.consts;
 
 /**
  * @description: 通用正则表达式定义
