@@ -14,5 +14,8 @@ public enum YesNoEnum {
 
     private int code;
     private String description;
-    private String description2;
+
+
+    private String description_andy_1;
+
 }
